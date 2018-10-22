@@ -32,7 +32,7 @@ public class ProductController {
 	@RequestMapping(value="/products", method=RequestMethod.GET)
 	public String products(Model model) {
 		int count = productService.getCount(); 
-		System.out.println("ìš”ì²­ì´ ë“¤ì–´ì™”ìŠµë‹ˆë‹¤");
+		System.out.println("¿äÃ»ÀÌ µé¾î¿Ô½À´Ï´Ù");
 		List<Product> product = productService.getProduct();
 		List<ProductImage> productImage = productImageService.getProduct();
 		List<Category> category = categoryServiceImpl.getProduct();
@@ -42,7 +42,7 @@ public class ProductController {
 		model.addAttribute("category",category);
 		model.addAttribute("count",count);
 		model.addAttribute("fileInfo",fileInfo);
-		System.out.println("ìš”ì²­ì„ ë¦¬í„´í–ˆìŠµë‹ˆë‹¤");
+		System.out.println("¿äÃ»À» ¸®ÅÏÇß½À´Ï´Ù");
 		return "products";
 	}
 }

@@ -1,58 +1,141 @@
 html {
-  width: 30em;
-  height: 100%;
-  word-wrap: break-word;
-  margin: auto;
-  overflow: hidden;
-
+	width: 30em;
+	margin: auto;
+	height: 1000;
+	overflow: scroll;
+	background-color: rgb(235, 230, 230);
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+	background-color: rgb(241, 238, 238);
 }
 
 #navbar {
-  width: 30em;
-  height: 3em;
-  background-color: limegreen;
-  position: fixed;
-
+	width: 30em;
+	height: 3em;
+	background-color: limegreen;
+	position: fixed;
+	z-index: 4;
 }
 
 #ad {
-  position: relative;
-  width: 30em;
-  height: 13em;
-  top: 3em;
-  white-space: nowrap;
+	position: relative;
+	width: 30em;
+	height: 13em;
+	margin-top: 3em;
+	overflow: hidden;
+	z-index: 2;
 }
 
 .thumbnail {
-  position: absolute;
-
-  width: 30em;
-  height: 13em;
+	z-index: 2;
+	position: absolute;
+	width: 30em;
+	height: 13em;
 }
 
 #category {
-  position: absolute;
-  text-align: center;
+	box-sizing: border-box;
+	height: 48px;
+	text-align: center;
+	border-bottom: 3px solid rgb(235, 231, 231);
+	border-collapse: collapse;
+	background-color:white;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+#category .cg {
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 12px;
 }
 
-li {
-  margin: 0 auto;
-  width:80px;
-  float:left;
+#category :first-child {
+	border-bottom: 3px solid green;
 }
 
-a {
-  text-decoration: none;
+#message {
+	height: 20px;
+	text-align: center;
+	padding: 12px;
+	font-size: 14px;
+	background-color:white;
+}
+
+#ro {
+	color: red;
+}
+
+.elements {
+	width: 30em;
+	display: inline-flex;
+	flex-wrap: wrap;
+	background-color: rgb(241, 238, 238);
+	padding: 8px;
+	margin: 0;
+	padding: 0;
+}
+
+.element {
+	background-color: white;
+	box-sizing: border-box;
+	width: 230px;
+	display: inline-block;
+	dheight: 23em;
+	margin: 5px;
+	text-overflow: ellipsis;
+}
+
+.pic {
+	width: 100%;
+	
+}
+
+.title {
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 10px;
+	width: 210px;
+	padding-bottom: 9px;
+	border-bottom: 2px solid rgb(235, 231, 231);
+}
+
+.contents {
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 10px;
+	margin-top: 0px;
+	width: 210px;
+	color: rgb(189, 187, 187);
+	text-overflow: ellipsis;
+	white-space: normal;
+	line-height: 1.2;
+	height: 2.4em;
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+footer {
+	display: block;
+	text-align: center;
+	width: 96.5%;
+	box-sizing: content-box;
+	padding: 3px;
+	margin: auto;
+	height: 1.5em;
+	padding: auto;
+}
+
+#top {
+	text-decoration: none;
+	color: black;
+	margin: auto;
+	font-size: 13px;
 }
