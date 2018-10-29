@@ -7,4 +7,5 @@ import kr.or.connect.bookservice.dto.Product;
 public interface ProductService {
 	public List<Product> getProduct();
 	public int getCount();
+	public List<Product> getCategory(Integer cn);
 }

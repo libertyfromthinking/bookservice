@@ -9,10 +9,12 @@
 
 <title>JS Bin</title>
 <link rel="stylesheet" href="<c:url value='/css/test.css'/>">
-
+<script type="text/javascript">
+	
+</script>
 </head>
-
 <body>
+
 
 	<div id="navbar"></div>
 	<div id="ad">
@@ -34,31 +36,14 @@
 			class="cg theater">${category[4].name }</span>
 	</article>
 	<div id="message">
-		바로 예매 가능한 전시, 공연, 행사가 <span id="ro">40개</span> 있습니다.
+		바로 예매 가능한 전시, 공연, 행사가 <span id="ro">${count}개</span> 있습니다.
 	</div>
 
 
 	<div class="elements">
-		<c:forEach items="${product}" var="product">
-			<div class="element">
-				<c:forEach items="${productImage}" var="productImage">
-					<c:if
-						test="${productImage.productId eq product.id and productImage.type eq 'ma'}">
-						<c:set var="index" value="${productImage.fileId-1 }" />
-						<img class="pic"
-							src="<c:url value='${fileInfo[index].saveFileName}'/>">
-						<br>
-					</c:if>
-				</c:forEach>
-				<span class="title">${product.description }</span><br> <span
-					class="contents">${product.content}</span>
-			</div>
-		</c:forEach>
-
+		
 	</div>
-	<div id="templateex">
-	
-	</div>
+	<span><div id="more">더보기</div></span>
 	<footer>
 		<a id="top" href="#ad">↑TOP</a>
 	</footer>
@@ -66,28 +51,20 @@
 
 
 
-	
 
-</body>
-	<script id="template" type="text/htmltemplate">
-		<c:set var="a" value="id"/>
-		<c:forEach items="${product}" var="product">
-			<c:if test='${product.categoryId eq 3}'>
-				<div class="element">
-					<c:forEach items="${productImage}" var="productImage">
-						<c:if
-							test="${productImage.productId eq product.id and productImage.type eq 'ma'}">
-							<c:set var="index" value="${productImage.fileId-1 }" />
-							<img class="pic"
-								src="<c:url value='${fileInfo[index].saveFileName}'/>">
-							<br>
-						</c:if>
-					</c:forEach>
-					<span class="title">${product.description }</span><br> <span
-						class="contents">${product.content}</span>
-				</div>
-			</c:if>
-		</c:forEach>
+
+
+	<script id="template" type="text/template">
+	<div class="element">
+		<img class="pic" src="<c:url value='filesource'/>">
+		<br>
+		<span class="title">filedescription</span>
+		<br> 
+		<span class="contents">filecontent</span>
+	</div>
 	</script>
 	<script src="<c:url value='/js/test.js'/>"></script>
+
+</body>
+
 </html>

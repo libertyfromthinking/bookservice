@@ -18,6 +18,12 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> list = productDao.selectAll();
 		return list;
 	}
+	
+	
+	public List<Product> getCategory(Integer cn){
+		List<Product> list = productDao.selectCategory(cn);
+		return list;
+	}
 
 	@Override
 	public int getCount() {
