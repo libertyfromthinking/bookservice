@@ -23,20 +23,25 @@ body {
 
 #ad {
 	position: relative;
-	width: 30em;
+	width: 300em;
 	height: 13em;
 	margin-top: 3em;
 	overflow: hidden;
 	z-index: 2;
+	white-space:nowrap;
 }
+
 
 .thumbnail {
 	z-index: 2;
-	position: absolute;
 	width: 30em;
 	height: 13em;
+	position: absolute;
+	white-space: nowrap;
+	
+	-moz-transform: translateX(100%);
+	
 }
-
 #category {
 	box-sizing: border-box;
 	height: 48px;

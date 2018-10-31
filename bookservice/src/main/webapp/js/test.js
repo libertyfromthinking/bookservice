@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+	var thumb = document.getElementsByClassName("thumbnail");
+	thumb[0].style.transform = "TranslateX(0%)";
+	var f = 0;
+
     var category = document.getElementById("category");
     var view = document.getElementsByClassName("cg");
     var add = document.getElementById("more");
@@ -76,6 +80,32 @@ document.addEventListener("DOMContentLoaded", function () {
         ajax();
         
     }
+    
+    function ex() {
+
+        thumb[f].style.transition = "transform 1s linear";
+        thumb[f].style.transform = "translateX(-100%)";
+
+        for(var j=0;j<thumb.length;j++){
+            if(j!=f&&j!=(f+1)&&j!=(f-1)){
+                thumb[j].style.transition = "";
+                thumb[j].style.transform = "translateX(100%)";
+            }
+        }
+
+        if (f == thumb.length - 1) {
+            for (var j = 0; j < thumb.length - 1; j++) {
+                f = -1;
+            }
+        }
+
+        thumb[f + 1].style.transition = "transform 1s linear";
+        thumb[f + 1].style.transform = "translateX(0%)";
+        
+        f++;
+
+    }
+
     
 
     category.addEventListener("click", function (evt) {
@@ -175,6 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
         	xhr.send();
         }
     });
-
+    setInterval(ex, 3000);
     doAll();
 });
