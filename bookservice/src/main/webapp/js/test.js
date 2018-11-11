@@ -1,9 +1,9 @@
 $("window").ready(function () {
     var $thumb = $(".thumbnail")
-    $thumb.css('transform', 'TranslateX(0%)');
+    $thumb.eq(0).css('transform', 'TranslateX(0%)');
     var f = 0;
 
-    var $category = $("#category")
+    var $category = $("#category")  
     var $view = $(".cg")
     var $add = $("#more");
     var addNum = 0;
@@ -40,27 +40,33 @@ $("window").ready(function () {
             type : "GET",
             dataType : "json"
         })
-        .done(function($res){
+        .done(function(res){
             var newcontent = '';
-            var $index = $res.findIndex(i=>i.productId!=null);
-            var resLength = $res.length;
-            
+            var index = res.findIndex(i=>i.productId!=null);
+            var resLength = res.length;
+            // var template = document.getElementById("template").innerHTML;
+            // var $template = $("#template").html();
+            //             console.log($template)
+            //             console.log(template)
             for (var i = 0; i < addNum; i++) {
-                for (var j = $index; j < resLength; j++) {
-                    if ($res[i].id == $res[j].productId && $res[j].type == 'ma') {
-                        var $template = $("#template").html;
-                        var filesource = 'img/' + $res[j].productId + '_' + $res[j].type + '_' + $res[j].productImageId + '.png';
+                for (var j = index; j < resLength; j++) {
+                    if (res[i].id == res[j].productId && res[j].type == 'ma') {
+                        
+                        var $template = $("#template").html();
+                        
+                        var filesource = 'img/' + res[j].productId + '_' + res[j].type + '_' + res[j].productImageId + '.png';
+                        
                         $template = $template.replace('filesource', filesource)
-                            .replace('filedescription', $res[i].description)
-                            .replace('filecontent', $res[i].content);
+                            .replace('filedescription', res[i].description)
+                            .replace('filecontent', res[i].content);
 
                         newcontent += $template;
-
+                        console.log(newcontent)
                     }
                 }
             }
-            $("#ro").html = $index + "개";
-            $(".elements").html = newcontent;
+            $("#ro").html(index + "개");
+            $(".elements").html(newcontent);
         })
         .fail(function(xhr, status, errorThrown){})
         .always(function(xhr, status) {
@@ -79,13 +85,13 @@ $("window").ready(function () {
 
     function ex() {
 
-        $thumb[f].css("transition","transform 1s linear");
-        $thumb[f].css("transform","translateX(-100%)");
+        $thumb.eq(f).css("transition","transform 1s linear");
+        $thumb.eq(f).css("transform","translateX(-100%)");
 
         for (var j = 0; j < $thumb.length; j++) {
             if (j != f && j != (f + 1) && j != (f - 1)) {
-                $thumb[j].css("transition","");
-                $thumb[j].css("transform","translateX(100%)");
+                $thumb.eq(j).css("transition","");
+                $thumb.eq(j).css("transform","translateX(100%)");
             }
         }
 
@@ -95,8 +101,8 @@ $("window").ready(function () {
             }
         }
 
-        $thumb[f + 1].css("transition","transform 1s linear");
-        $thumb[f + 1].css("transform","translateX(0%)");
+        $thumb.eq(f+1).css("transition","transform 1s linear");
+        $thumb.eq(f+1).css("transform","translateX(0%)");
 
         f++;
 
@@ -145,57 +151,39 @@ $("window").ready(function () {
             type : "GET",
             dataType : "json"
         })
-        .done(function($res){
+        .done(function(res){
             var newcontent = '';
-            var $index = $res.findIndex(i=>i.productId!=null);
-            var resLength = $res.length;
+            var index = res.findIndex(i=>i.productId!=null);
+            var resLength = res.length;
             if (addNum + 4 < index) {
                 addNum = addNum + 4;
-            } else {
-                addNum = $index;
-                $parent.removeChild($add);
+            } else if(addNum==8){
+                addNum = index;
+                $add.detach();
             }
             
             for (var i = 0; i < addNum; i++) {
-                for (var j = $index; j < resLength; j++) {
-                    if ($res[i].id == $res[j].productId && $res[j].type == 'ma') {
-                        var $template = $("#template").html;
-                        var filesource = 'img/' + $res[j].productId + '_' + $res[j].type + '_' + $res[j].productImageId + '.png';
+                for (var j = index; j < resLength; j++) {
+                    if (res[i].id == res[j].productId && res[j].type == 'ma') {
+                        var $template = $("#template").html();
+                        var filesource = 'img/' + res[j].productId + '_' + res[j].type + '_' + res[j].productImageId + '.png';
                         $template = $template.replace('filesource', filesource)
-                            .replace('filedescription', $res[i].description)
-                            .replace('filecontent', $res[i].content);
+                            .replace('filedescription', res[i].description)
+                            .replace('filecontent', res[i].content);
         
                         newcontent += $template;
         
                     }
                 }
             }
-            $("#ro").html = $index + "개";
-            $(".elements").html = newcontent;
+            $("#ro").html(index + "개");
+            $(".elements").html(newcontent)
         })
         .fail(function(xhr, status, errorThrown){})
         .always(function(xhr, status) {
             console.log("요청이 완료되었습니다!");
         });
-        // if (pageNum == 1) {
-        //     xhr.open("GET", "./category?cn=1");
-        //     xhr.send();
-        // } else if (pageNum == 2) {
-        //     xhr.open("GET", "./category?cn=2");
-        //     xhr.send();
-        // } else if (pageNum == 3) {
-        //     xhr.open("GET", "./category?cn=3");
-        //     xhr.send();
-        // } else if (pageNum == 4) {
-        //     xhr.open("GET", "./category?cn=4");
-        //     xhr.send();
-        // } else if (pageNum == 5) {
-        //     xhr.open("GET", "./category?cn=5");
-        //     xhr.send();
-        // } else if (pageNum == 0) {
-        //     xhr.open("GET", "./category?cn=0");
-        //     xhr.send();
-        // }
+
     });
     
     setInterval(ex, 3000);
