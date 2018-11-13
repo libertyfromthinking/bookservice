@@ -32,7 +32,7 @@ body {
 }
 
 
-.thumbnail {
+.promotion {
 	z-index: 2;
 	width: 30em;
 	height: 13em;
@@ -68,7 +68,7 @@ body {
 }
 
 
-#message {
+#message_container {
 	height: 20px;
 	text-align: center;
 	padding: 12px;
@@ -76,7 +76,7 @@ body {
 	background-color:white;
 }
 
-#ro {
+#message {
 	color: red;
 }
 

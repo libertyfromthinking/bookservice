@@ -22,7 +22,7 @@
 			<c:set var="index" value="${productImage.fileId-1}" />
 			<c:if
 				test="${productImage.type eq 'ma' and productImage.fileId eq fileInfo[index].id}">
-				<img class='thumbnail'
+				<img class='promotion'
 					src='<c:url value="${fileInfo[index].saveFileName}"/>'>
 			</c:if>
 		</c:forEach>
@@ -36,8 +36,8 @@
 			class="cg theater">${category[4].name }</span>
 	</article>
 
-	<div id="message">
-		바로 예매 가능한 전시, 공연, 행사가 <span id="ro">${count}개</span> 있습니다.
+	<div id="message_container">
+		바로 예매 가능한 전시, 공연, 행사가 <span id="message">${count}개</span> 있습니다.
 	</div>
 
 	<div class="elements"></div>
